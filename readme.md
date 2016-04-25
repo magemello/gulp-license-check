@@ -27,9 +27,9 @@ gulp.task('license', function () {
 
 #### Options
 
-**path**: {string} . Path of your header file.
-**blocking**: {boolean} default true. If set to true in case of missing header will block the build
-**log**: {boolean} default true. If set to false will disavble the log in console. 
+**path**: {string} . Path of your header file.<br />
+**blocking**: {boolean} default true. If set to true in case of missing header will block the build.<br />
+**log**: {boolean} default true. If set to false will disavble the log in console.<br />
 
 ## License
 
