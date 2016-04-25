@@ -1,10 +1,6 @@
 {
   "name": "gulp-license-check",
-<<<<<<< HEAD
-  "version": "0.0.3",
-=======
   "version": "0.0.4",
->>>>>>> improve description and ignore
   "description": "This plugin check a specific header/license in the files",
   "license": "MIT",
   "repository": "https://github.com/magemello/gulp-license-check",

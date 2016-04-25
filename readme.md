@@ -25,15 +25,9 @@ gulp.task('license', function () {
 
 #### Options
 
-<<<<<<< HEAD
-**path**: {string} . Path of your header file.<br />
-**blocking**: {boolean} default true. If set to true in case of missing header will block the build.<br />
-**log**: {boolean} default true. If set to false will disavble the log in console.<br />
-=======
 **path**: {string} . Path of your header file, this is the header that has to match in all the files of the project.<br />
 **blocking**: {boolean} default true. If it's true, in case of missing header will block the build.<br />
 **log**: {boolean} default true. If it's false the plugin doesn't not show the log in the console.<br />
->>>>>>> improve description and ignore
 
 ## License
 
