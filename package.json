@@ -1,0 +1,51 @@
+{
+  "name": "gulp-license-check",
+  "version": "0.0.1",
+  "description": "This plugin check a specific header/license in the files",
+  "license": "MIT",
+  "repository": "https://github.com/magemello/gulp-license-check",
+  "author": {
+    "name": "Mario Romano",
+    "email": "mario.romano83@gmail.com",
+    "url": "http://magemello.github.io/"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1",
+    "vinyl-file": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "xo": "^0.14.0",
+    "should": "*"
+  },
+  "xo": {
+    "overrides": [
+      {
+        "files": "test/*.js",
+        "rules": {
+          "max-nested-callbacks": 0,
+          "handle-callback-err": 0
+        }
+      }
+    ],
+    "rules": {
+      "one-var": 0,
+      "padded-blocks": 0,
+      "no-mixed-requires": 0,
+      "quotes": [2, "single", "avoid-escape"]
+    }
+  }
+}
