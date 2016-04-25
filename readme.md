@@ -31,7 +31,6 @@ gulp.task('license', function () {
 **blocking**: {boolean} default true. If set to true in case of missing header will block the build
 **log**: {boolean} default true. If set to false will disavble the log in console. 
 
-
 ## License
 
 MIT © [Mario Romano](http://magemello.github.io/)

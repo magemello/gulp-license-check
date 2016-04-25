@@ -27,9 +27,12 @@
     "vinyl-file": "^2.0.0"
   },
   "devDependencies": {
+    "event-stream": "^3.3.2",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
     "mocha": "^2.0.1",
-    "xo": "^0.14.0",
-    "should": "*"
+    "should": "*",
+    "xo": "^0.14.0"
   },
   "xo": {
     "overrides": [
@@ -45,7 +48,11 @@
       "one-var": 0,
       "padded-blocks": 0,
       "no-mixed-requires": 0,
-      "quotes": [2, "single", "avoid-escape"]
+      "quotes": [
+        2,
+        "single",
+        "avoid-escape"
+      ]
     }
   }
 }
