@@ -1,6 +1,6 @@
 {
   "name": "gulp-license-check",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "This plugin check a specific header/license in the files",
   "license": "MIT",
   "repository": "https://github.com/magemello/gulp-license-check",
