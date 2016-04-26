@@ -22,7 +22,8 @@ describe('gulp-license-check', function () {
 			var stream = license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			});
 
 			stream.on('data', function (file) {
@@ -54,7 +55,8 @@ describe('gulp-license-check', function () {
 			var stream = license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			});
 
 			stream.once('data', function (file) {
@@ -81,12 +83,13 @@ describe('gulp-license-check', function () {
 
 	describe('setting tests', function () {
 
-		it('if {log: false } should not log in console and event', function (done) {
+		it('if {logInfo: false, logError: false } should not log in console and event', function (done) {
 			var logs = [];
-			var stream = gulp.src('./test/fixture/ko.js').pipe(license({
+			var stream = gulp.src('./test/fixture/*.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.on('log', function (log) {
@@ -102,12 +105,13 @@ describe('gulp-license-check', function () {
 			});
 		});
 
-		it('if {log: true } should log in console and event', function (done) {
+		it('if {logError: true } should log errors in console and event channel', function (done) {
 			var logs = [];
 			var stream = gulp.src('./test/fixture/ko.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: true
+				logInfo: false,
+				logError: true
 			}));
 
 			stream.on('log', function (log) {
@@ -123,12 +127,79 @@ describe('gulp-license-check', function () {
 			});
 		});
 
+		it('if {logError: true } should not log errors in console and event channel', function (done) {
+			var logs = [];
+			var stream = gulp.src('./test/fixture/ko.js').pipe(license({
+				path: './test/fixture/header.txt',
+				blocking: false,
+				logInfo: false,
+				logError: false
+			}));
+
+			stream.on('log', function (log) {
+				logs.push(log);
+			});
+
+			stream.on('data', function () {
+			});
+
+			stream.on('end', function () {
+				logs.length.should.equal(0);
+				done();
+			});
+		});
+
+		it('if {logInfo: true } should log infos in console and event channel', function (done) {
+			var logs = [];
+			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
+				path: './test/fixture/header.txt',
+				blocking: false,
+				logInfo: true,
+				logError: false
+			}));
+
+			stream.on('log', function (log) {
+				logs.push(log);
+			});
+
+			stream.on('data', function () {
+			});
+
+			stream.on('end', function () {
+				logs.length.should.equal(1);
+				done();
+			});
+		});
+
+		it('if {logInfo: false } should not log infos in console and event channel', function (done) {
+			var logs = [];
+			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
+				path: './test/fixture/header.txt',
+				blocking: false,
+				logInfo: false,
+				logError: false
+			}));
+
+			stream.on('log', function (log) {
+				logs.push(log);
+			});
+
+			stream.on('data', function () {
+			});
+
+			stream.on('end', function () {
+				logs.length.should.equal(0);
+				done();
+			});
+		});
+
 		it('if header file do not exist throw an error', function (done) {
 
 			gulp.src('./test/fixture/ok.js').pipe(license({
 				path: './test/fixture/header_no_exist.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}).on('error', function (error) {
 				should.exist(error.message);
 				error.message.should.equal('The license header file doesn`t exist ./test/fixture/header_no_exist.txt');
@@ -141,7 +212,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/ko.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: true,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.once('error', function (error) {
@@ -159,7 +231,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/*.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.on('error', function (error) {
@@ -187,7 +260,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/*.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.on('error', done);
@@ -208,7 +282,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/*.donotexist').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.on('error', done);
@@ -233,7 +308,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: false
+				logInfo: false,
+				logError: false
 			}));
 
 			stream.on('error', function (error) {
@@ -257,7 +333,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: true
+				logInfo: true,
+				logError: false
 			}));
 
 			stream.on('log', function (log) {
@@ -278,7 +355,8 @@ describe('gulp-license-check', function () {
 			var stream = gulp.src('./test/fixture/ko.js').pipe(license({
 				path: './test/fixture/header.txt',
 				blocking: false,
-				log: true
+				logInfo: false,
+				logError: true
 			}));
 
 			stream.on('log', function (log) {

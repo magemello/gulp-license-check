@@ -10,14 +10,16 @@ var fs = require('fs'),
  *
  * @param {string} path - The license header template file path.
  * @param {boolean} [true] blocking - Enable the plugin to block the build in case of error .
- * @param {boolean} [true] log - Enable the log.
- *
+ * @param {boolean} [true] logInfo - Enable info log .
+ * @param {boolean} [true] logError - Enable errors log.
+
  * @returns {object} Gulp extension in the pipline.
  */
 module.exports = function (opts) {
 	opts = opts || {};
 
-	var isLogActive = opts.log === undefined ? true : opts.log,
+	var isInfoLogActive = opts.logInfo === undefined ? true : opts.logInfo,
+		isErrorLogActive = opts.logError === undefined ? true : opts.logError,
 		isErrorBlocking = opts.blocking === undefined ? true : opts.blocking,
 		licenseFilePath = opts.path;
 
@@ -108,7 +110,7 @@ module.exports = function (opts) {
 	 * @param {object} ctx - context.
 	 */
 	function log(filePath, ctx) {
-		if (isLogActive) {
+		if (isInfoLogActive) {
 			ctx.emit('log', {
 				msg: 'Header present',
 				path: filePath
@@ -138,7 +140,7 @@ module.exports = function (opts) {
 	 * @param {object} ctx - context.
 	 */
 	function logError(filePath, ctx) {
-		if (isLogActive) {
+		if (isErrorLogActive) {
 			ctx.emit('log', {
 				msg: 'Header not present',
 				path: filePath

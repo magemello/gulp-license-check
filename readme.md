@@ -18,7 +18,8 @@ gulp.task('license', function () {
         .pipe(license({
             path: 'app/license_header.txt',
             blocking: false,
-            log: true
+            logInfo: false,
+            logError: true
         }));
 });
 ```
@@ -27,7 +28,8 @@ gulp.task('license', function () {
 
 **path**: {string} . Path of your header file, this is the header that has to match in all the files of the project.<br />
 **blocking**: {boolean} default true. If it's true, in case of missing header will block the build.<br />
-**log**: {boolean} default true. If it's false the plugin doesn't not show the log in the console.<br />
+**logInfo**: {boolean} default true. If it's false the plugin doesn't show the info log.<br />
+**logError**: {boolean} default true. If it's false the plugin doesn't show the error log.<br />
 
 ## License
 
