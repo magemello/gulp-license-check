@@ -10,6 +10,9 @@
   <a href='https://www.youtube.com/watch?v=9auOCbH5Ns4'>
     <img src='https://img.shields.io/badge/unicorn-approved-ff69b4.svg' alt='unicorn' />
   </a>
+  <a href='https://www.npmjs.com/package/gulp-license-check'>
+    <img src='https://img.shields.io/npm/dm/gulp-license-check.svg' alt='unicorn' />
+  </a>
 </p>
 
 > gulp-license-check is a Gulp extension to check the presence of a specific header in all the files of a project, and give to you a log of all the files where the header is missing. Never miss again a license header in a file.
