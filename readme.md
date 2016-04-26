@@ -8,7 +8,7 @@
     <img src='https://coveralls.io/repos/github/magemello/gulp-license-check/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href='https://www.npmjs.com/package/gulp-license-check'>
-    <img src='https://img.shields.io/npm/dm/gulp-license-check.svg' alt='unicorn' />
+    <img src='https://img.shields.io/npm/dm/gulp-license-check.svg' alt='npm downloads' />
   </a>
   <a href='https://raw.githubusercontent.com/magemello/gulp-license-check/master/license'>
      <img src='https://img.shields.io/badge/license-MIT-blue.svg' alt='license' />
@@ -17,10 +17,10 @@
      <img src='https://img.shields.io/badge/unicorn-approved-ff69b4.svg' alt='unicorn' />
   </a>
   <a href='http://magemello.github.io/blog.html'>
-     <img src='https://img.shields.io/badge/style-blog-blue.svg?label=my' alt='unicorn' />
+     <img src='https://img.shields.io/badge/style-blog-blue.svg?label=my' alt='my blog' />
   </a>
   <a href='http://magemello.github.io'>
-     <img src='https://img.shields.io/badge/style-portfolio-orange.svg?label=my' alt='unicorn' />
+     <img src='https://img.shields.io/badge/style-portfolio-orange.svg?label=my' alt='my portfolio' />
   </a>
 </p>
 
