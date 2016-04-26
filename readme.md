@@ -1,10 +1,10 @@
 # gulp-license-check
 
 <p align="center">
-  <a title='Build Status' href="https://travis-ci.org/magemello/ci-alarm">
-    <img src='https://travis-ci.org/magemello/gulp-license-check.svg?branch=master alt='travis Status' />
+  <a title='Build Status' href='https://travis-ci.org/magemello/ci-alarm'>
+    <img src='https://travis-ci.org/magemello/gulp-license-check.svg?branch=master' alt='travis Status' />
   </a>
-  <a href='https://coveralls.io/github/magemello/gulp-license-check?branch=master>
+  <a href='https://coveralls.io/github/magemello/gulp-license-check?branch=master'>
     <img src='https://coveralls.io/repos/github/magemello/gulp-license-check/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href='https://www.youtube.com/watch?v=9auOCbH5Ns4'>
