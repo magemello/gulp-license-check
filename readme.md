@@ -7,11 +7,14 @@
   <a href='https://coveralls.io/github/magemello/gulp-license-check?branch=master'>
     <img src='https://coveralls.io/repos/github/magemello/gulp-license-check/badge.svg?branch=master' alt='Coverage Status' />
   </a>
-  <a href='https://www.youtube.com/watch?v=9auOCbH5Ns4'>
-    <img src='https://img.shields.io/badge/unicorn-approved-ff69b4.svg' alt='unicorn' />
-  </a>
   <a href='https://www.npmjs.com/package/gulp-license-check'>
     <img src='https://img.shields.io/npm/dm/gulp-license-check.svg' alt='unicorn' />
+  </a>
+  <a href='https://raw.githubusercontent.com/magemello/gulp-license-check/master/license'>
+     <img src='https://img.shields.io/badge/license-MIT-blue.svg' alt='license' />
+  </a>
+  <a href='https://www.youtube.com/watch?v=9auOCbH5Ns4'>
+     <img src='https://img.shields.io/badge/unicorn-approved-ff69b4.svg' alt='unicorn' />
   </a>
 </p>
 
