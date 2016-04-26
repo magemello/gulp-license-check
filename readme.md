@@ -1,7 +1,7 @@
 # gulp-license-check
 
 <p>
-  <a title='Build Status' href='https://travis-ci.org/magemello/ci-alarm'>
+  <a title='Build Status' href='https://travis-ci.org/magemello/gulp-license-check'>
     <img src='https://travis-ci.org/magemello/gulp-license-check.svg?branch=master' alt='travis Status' />
   </a>
   <a href='https://coveralls.io/github/magemello/gulp-license-check?branch=master'>
@@ -15,6 +15,12 @@
   </a>
   <a href='https://www.youtube.com/watch?v=9auOCbH5Ns4'>
      <img src='https://img.shields.io/badge/unicorn-approved-ff69b4.svg' alt='unicorn' />
+  </a>
+  <a href='http://magemello.github.io/blog.html'>
+     <img src='https://img.shields.io/badge/style-blog-blue.svg?label=my' alt='unicorn' />
+  </a>
+  <a href='http://magemello.github.io'>
+     <img src='https://img.shields.io/badge/style-portfolio-orange.svg?label=my' alt='unicorn' />
   </a>
 </p>
 
