@@ -1,6 +1,6 @@
 # gulp-license-check
 
-<p align="center">
+<p>
   <a title='Build Status' href='https://travis-ci.org/magemello/ci-alarm'>
     <img src='https://travis-ci.org/magemello/gulp-license-check.svg?branch=master' alt='travis Status' />
   </a>
