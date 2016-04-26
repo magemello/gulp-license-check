@@ -1,4 +1,5 @@
 # gulp-license-check [![Build Status](https://travis-ci.org/magemello/gulp-license-check.svg?branch=master)](https://travis-ci.org/magemello/gulp-license-check)
+[![Coverage Status](https://coveralls.io/repos/github/magemello/gulp-license-check/badge.svg?branch=master)](https://coveralls.io/github/magemello/gulp-license-check?branch=master)
 
 > gulp-license-check is a Gulp extension to check the presence of a specific header in all the files of a project, and give to you a log of all the files where the header is missing. Never miss again a license header in a file.
 
