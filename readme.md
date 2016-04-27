@@ -26,6 +26,7 @@
 
 > gulp-license-check is a Gulp extension to check the presence of a specific header in all the files of a project, and give to you a log of all the files where the header is missing. Never miss again a license header in a file.
 
+> If you want to run this plugin from npm without using gulp you can use [license-check](https://github.com/magemello/license-check).
 ## Install
 
 ```

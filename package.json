@@ -49,6 +49,7 @@
       }
     ],
     "rules": {
+      "no-lonely-if" : 0,
       "one-var": 0,
       "padded-blocks": 0,
       "no-mixed-requires": 0,
