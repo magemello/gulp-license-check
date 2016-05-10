@@ -16,7 +16,11 @@ var fs = require('fs'),
  * @returns {object} Gulp extension in the pipline.
  */
 module.exports = function (opts) {
+
 	opts = opts || {};
+
+	var HEADER_NOT_PRESENT = 'Header not present';
+	var HEADER_PRESENT = 'Header present';
 
 	var isInfoLogActive = opts.logInfo === undefined ? true : opts.logInfo,
 		isErrorLogActive = opts.logError === undefined ? true : opts.logError,
@@ -112,10 +116,10 @@ module.exports = function (opts) {
 	function log(filePath, ctx) {
 		if (isInfoLogActive) {
 			ctx.emit('log', {
-				msg: 'Header present',
+				msg: HEADER_PRESENT,
 				path: filePath
 			});
-			gutil.log(gutil.colors.green('Header present'), filePath);
+			gutil.log(gutil.colors.green(HEADER_PRESENT), filePath);
 		}
 	}
 
@@ -142,29 +146,42 @@ module.exports = function (opts) {
 	function logError(filePath, ctx) {
 		if (isErrorLogActive) {
 			ctx.emit('log', {
-				msg: 'Header not present',
+				msg: HEADER_NOT_PRESENT,
 				path: filePath
 			});
-			gutil.log(gutil.colors.red('Header not present'), filePath);
+			gutil.log(gutil.colors.red(HEADER_NOT_PRESENT), filePath);
 		}
 	}
 
 	/**
 	 * Check if header is present.
 	 *
-	 * @param {string[]} currentFile - file in string[] format.
+	 * @param {object} currentFile - file in string[] format.
 	 *
 	 * @returns {boolean} dose match.
 	 */
 	function isLicenseHeaderPresent(currentFile) {
-		var currentFileUtf8 = readCurrentFile(currentFile),
-			licenseFileUtf8 = readLicenseHeaderFile();
+		if (!isFileEmpty(currentFile.contents)) {
+			var currentFileUtf8 = readCurrentFile(currentFile),
+				licenseFileUtf8 = readLicenseHeaderFile();
 
-		for (var i = 0; i < licenseFileUtf8.length; i++) {
-			if (currentFileUtf8[i] !== licenseFileUtf8[i]) {
-				return false;
+			for (var i = 0; i < licenseFileUtf8.length; i++) {
+				if (currentFileUtf8[i] !== licenseFileUtf8[i]) {
+					return false;
+				}
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Check if a file is empty.
+	 *
+	 * @param {string} file - file contents in string format.
+	 *
+	 * @returns {boolean}.
+	 */
+	function isFileEmpty(fileContents) {
+		return fileContents.toString('utf8').trim() === '';
 	}
 };

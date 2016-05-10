@@ -14,6 +14,9 @@ require('mocha');
 
 describe('gulp-license-check', function () {
 
+	var HEADER_NOT_PRESENT = 'Header not present';
+	var HEADER_PRESENT = 'Header present';
+
 	describe('in buffer mode', function () {
 
 		it('file should pass through', function (done) {
@@ -245,7 +248,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(2);
+				files.length.should.equal(3);
 				errors.length.should.equal(0);
 				done();
 			});
@@ -271,7 +274,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(2);
+				files.length.should.equal(3);
 				done();
 			});
 		});
@@ -338,7 +341,7 @@ describe('gulp-license-check', function () {
 			}));
 
 			stream.on('log', function (log) {
-				log.msg.should.equal('Header present');
+				log.msg.should.equal(HEADER_PRESENT);
 				log.path.should.containEql('/test/fixture/ok.js');
 			});
 
@@ -360,7 +363,7 @@ describe('gulp-license-check', function () {
 			}));
 
 			stream.on('log', function (log) {
-				log.msg.should.equal('Header not present');
+				log.msg.should.equal(HEADER_NOT_PRESENT);
 				log.path.should.containEql('/test/fixture/ko.js');
 			});
 
@@ -368,6 +371,35 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
+				done();
+			});
+		});
+
+		it('should not check empty files', function (done) {
+
+			var files = [];
+			var headerNotPresent = [];
+
+			var stream = gulp.src('./test/fixture/empty.js').pipe(license({
+				path: './test/fixture/header.txt',
+				blocking: false,
+				logInfo: true,
+				logError: true
+			}));
+
+			stream.on('log', function (log) {
+				if (log.msg === HEADER_NOT_PRESENT) {
+					headerNotPresent.push(log);
+				}
+			});
+
+			stream.on('data', function (file) {
+				files.push(file);
+			});
+
+			stream.on('end', function () {
+				files.length.should.equal(1);
+				headerNotPresent.length.should.equal(0);
 				done();
 			});
 		});
