@@ -27,6 +27,8 @@ module.exports = function (opts) {
 		isErrorBlocking = opts.blocking === undefined ? true : opts.blocking,
 		licenseFilePath = opts.path;
 
+	var licenseFileUtf8;
+
 	return through.obj(function (file, encoding, callback) {
 		if (file.isNull()) {
 			return callback(null, file);
@@ -100,6 +102,10 @@ module.exports = function (opts) {
 	 * @returns {string[]} The license header template in sting[] format.
 	 */
 	function readLicenseHeaderFile() {
+		if (licenseFileUtf8) {
+			return licenseFileUtf8;
+		}
+
 		if (fs.existsSync(licenseFilePath)) {
 			return fs.readFileSync(licenseFilePath, 'utf8').split(/\r?\n/);
 		}
