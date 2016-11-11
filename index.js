@@ -91,7 +91,7 @@ module.exports = function (opts) {
 	 * @returns {string[]} file in string[] format.
 	 */
 	function readCurrentFile(file) {
-		return file.contents.toString('utf8').split(/\r?\n/);
+		return file.contents.toString('utf8');
 	}
 
 	/**
@@ -101,7 +101,7 @@ module.exports = function (opts) {
 	 */
 	function readLicenseHeaderFile() {
 		if (fs.existsSync(licenseFilePath)) {
-			return fs.readFileSync(licenseFilePath, 'utf8').split(/\r?\n/);
+			return fs.readFileSync(licenseFilePath, 'utf8');
 		}
 
 		throw new gutil.PluginError('gulp-license-check', new Error('The license header file doesn`t exist ' + licenseFilePath));
