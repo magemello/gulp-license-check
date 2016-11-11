@@ -165,11 +165,7 @@ module.exports = function (opts) {
 			var currentFileUtf8 = readCurrentFile(currentFile),
 				licenseFileUtf8 = readLicenseHeaderFile();
 
-			for (var i = 0; i < licenseFileUtf8.length; i++) {
-				if (currentFileUtf8[i] !== licenseFileUtf8[i]) {
-					return false;
-				}
-			}
+			return currentFileUtf8.lastIndexOf(licenseFileUtf8) === 0;
 		}
 		return true;
 	}
