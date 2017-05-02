@@ -8,7 +8,8 @@ var fs = require('fs'),
 	File = require('gulp-util').File,
 	gutil = require('gulp-util'),
 	gulp = require('gulp'),
-	license = require('../');
+	license = require('../'),
+	path = require('path');
 
 require('mocha');
 
@@ -152,7 +153,7 @@ describe('gulp-license-check', function () {
 			});
 		});
 
-		it('if {logInfo: true } should log infos in console and event channel', function (done) {
+		it('if {logInfo: true } should log info in console and event channel', function (done) {
 			var logs = [];
 			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
 				path: './test/fixture/header.txt',
@@ -174,7 +175,7 @@ describe('gulp-license-check', function () {
 			});
 		});
 
-		it('if {logInfo: false } should not log infos in console and event channel', function (done) {
+		it('if {logInfo: false } should not log info in console and event channel', function (done) {
 			var logs = [];
 			var stream = gulp.src('./test/fixture/ok.js').pipe(license({
 				path: './test/fixture/header.txt',
@@ -248,7 +249,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(4);
+				files.length.should.equal(5);
 				errors.length.should.equal(0);
 				done();
 			});
@@ -271,7 +272,6 @@ describe('gulp-license-check', function () {
 
 			stream.on('error', function (error) {
 				errors.push(error);
-				done();
 			});
 
 			stream.on('data', function (file) {
@@ -302,7 +302,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(4);
+				files.length.should.equal(5);
 				done();
 			});
 		});
@@ -345,7 +345,6 @@ describe('gulp-license-check', function () {
 
 			stream.on('error', function (error) {
 				errors.push(error);
-				done();
 			});
 
 			stream.on('data', function (file) {
@@ -370,13 +369,23 @@ describe('gulp-license-check', function () {
 
 			stream.on('log', function (log) {
 				log.msg.should.equal(HEADER_PRESENT);
-				log.path.should.containEql('/test/fixture/ok.js');
+				log.path.should.containEql(path.normalize('/test/fixture/ok.js'));
+				done();
 			});
+		});
 
-			stream.on('data', function () {
-			});
+		it('if license present in a file and contain strict should be logged as header present', function (done) {
 
-			stream.on('end', function () {
+			var stream = gulp.src('./test/fixture/strict.js').pipe(license({
+				path: './test/fixture/header.txt',
+				blocking: false,
+				logInfo: true,
+				logError: false
+			}));
+
+			stream.on('log', function (log) {
+				log.msg.should.equal(HEADER_PRESENT);
+				log.path.should.containEql(path.normalize('/test/fixture/strict.js'));
 				done();
 			});
 		});
@@ -392,15 +401,10 @@ describe('gulp-license-check', function () {
 
 			stream.on('log', function (log) {
 				log.msg.should.equal(HEADER_NOT_PRESENT);
-				log.path.should.containEql('/test/fixture/ko.js');
-			});
-
-			stream.on('data', function () {
-			});
-
-			stream.on('end', function () {
+				log.path.should.containEql(path.normalize('/test/fixture/ko.js'));
 				done();
 			});
+
 		});
 
 		it('should not check empty files', function (done) {
