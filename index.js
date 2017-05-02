@@ -93,7 +93,7 @@ module.exports = function (opts) {
 	 * @returns {string[]} file in string[] format.
 	 */
 	function readCurrentFile(file) {
-		return file.contents.toString('utf8').split(/\r?\n/);
+		return file.contents.toString('utf8');
 	}
 
 	/**
@@ -107,7 +107,7 @@ module.exports = function (opts) {
 		}
 
 		if (fs.existsSync(licenseFilePath)) {
-			return fs.readFileSync(licenseFilePath, 'utf8').split(/\r?\n/);
+			return fs.readFileSync(licenseFilePath, 'utf8');
 		}
 
 		throw new gutil.PluginError('gulp-license-check', new Error('The license header file doesn`t exist ' + licenseFilePath));
@@ -171,11 +171,7 @@ module.exports = function (opts) {
 			var currentFileUtf8 = readCurrentFile(currentFile),
 				licenseFileUtf8 = readLicenseHeaderFile();
 
-			for (var i = 0; i < licenseFileUtf8.length; i++) {
-				if (currentFileUtf8[i] !== licenseFileUtf8[i]) {
-					return false;
-				}
-			}
+			return currentFileUtf8.lastIndexOf(licenseFileUtf8) === 0;
 		}
 		return true;
 	}

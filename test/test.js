@@ -248,7 +248,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(3);
+				files.length.should.equal(4);
 				errors.length.should.equal(0);
 				done();
 			});
@@ -256,6 +256,34 @@ describe('gulp-license-check', function () {
 	});
 
 	describe('behaviour tests', function () {
+
+		it('allows trailing newlines', function (done) {
+
+			var files = [];
+			var errors = [];
+
+			var stream = gulp.src('./test/fixture/trailing-ok.js').pipe(license({
+				path: './test/fixture/trailing-header.txt',
+				blocking: false,
+				logInfo: false,
+				logError: false
+			}));
+
+			stream.on('error', function (error) {
+				errors.push(error);
+				done();
+			});
+
+			stream.on('data', function (file) {
+				files.push(file);
+			});
+
+			stream.on('end', function () {
+				files.length.should.equal(1);
+				errors.length.should.equal(0);
+				done();
+			});
+		});
 
 		it('multiple files should pass through', function (done) {
 
@@ -274,7 +302,7 @@ describe('gulp-license-check', function () {
 			});
 
 			stream.on('end', function () {
-				files.length.should.equal(3);
+				files.length.should.equal(4);
 				done();
 			});
 		});
